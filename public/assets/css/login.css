@@ -1,0 +1,8 @@
+body {
+        background-color: #000;
+        color: #fff;
+      }
+      /* Custom smooth transition for all interactive elements */
+      .input-transition {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
