@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mobil', function (Blueprint $table) {
+        Schema::create('kontaks', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->integer('no_plat');
+            $table->string('email');
+            $table->string('no_tlp');
+            $table->string('keperluan');
+            $table->enum('respon', ['dibaca', 'pending'])->default('pending');
+            $table->timestamps();
         });
     }
 
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('kontaks');
     }
 };

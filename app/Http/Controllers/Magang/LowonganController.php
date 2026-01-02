@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class LowonganController extends Controller
 {
     function lowongan(){
-        $lowongans = Lowongan::with('mitra', 'type', 'jenjang', 'keahlian')->paginate(5);
+        $lowongans = Lowongan::with('mitra', 'type', 'jenjang', 'keahlian')->get();
         $count = Lowongan::count();
         $types = Type::get();
         $jenjangs = Jenjang::get();

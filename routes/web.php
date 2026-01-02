@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\ {
 
 use App\Http\Controllers\Magang\ {
     AdminController,
+    KontakController,
     LamaranController,
     LowonganController,
     MitraController
@@ -30,6 +31,13 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 // Lowongan
 Route::get('/lowongan', [LowonganController::class, 'lowongan'])->name('lowongan');
 Route::get('/lowongan/{lowongan}/show', [LowonganController::class, 'lowonganShow'])->name('lowonganShow');
+
+// Kontak
+Route::get('/kontak', [KontakController::class, 'kontak'])->name('kontak');
+Route::post('/kontak-store', [KontakController::class, 'kontakStore'])->name('kontakStore');
+Route::get('/kontak/{kontak}/show', [KontakController::class, 'kontakShow'])->name('kontakShow');
+Route::put('/kontak/{kontak}/update', [KontakController::class, 'kontakUpdate'])->name('kontakUpdate');
+Route::delete('/kontak/{kontak}/hapus', [KontakController::class, 'kontakHapus'])->name('kontakHapus');
 
 // content setelah login
 Route::group(['middleware' => ['auth']], function() {

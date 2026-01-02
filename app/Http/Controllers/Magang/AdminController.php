@@ -53,7 +53,7 @@ class AdminController extends Controller
             'password'            => 'required|min:8',
         ]);
         
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+        if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
         
         if ($request->hasFile('foto')) {
             $imagePath = $request->file('foto')->store('users', 'public');
@@ -73,7 +73,7 @@ class AdminController extends Controller
             'password'      => Hash::make($request->password)
         ]);
 
-        return redirect()->route('user')->with('success','Data User Berhasil Ditambah');
+        return redirect()->route('user')->with('success','Data user berhasil ditambah');
     }
 
     function userEdit(User $user){
@@ -103,7 +103,7 @@ class AdminController extends Controller
             'password'            => 'nullable|min:8',
         ]);
         
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+        if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
         
         $data = [
             'nama'          => $request->nama,
@@ -134,7 +134,7 @@ class AdminController extends Controller
         // update data user
         $user->update($data);
 
-        return redirect()->route('user')->with('success','Data User Berhasil Diupdate');
+        return redirect()->route('user')->with('success','Data user berhasil diupdate');
     }
 
     function userHapus($user){
@@ -153,7 +153,7 @@ class AdminController extends Controller
             $user->delete();
         }
 
-        return redirect()->route('user')->with('success','Data User Berhasil Dihapus');
+        return redirect()->route('user')->with('success','Data user berhasil dihapus');
     }
 
     // fungsi halaman admin type
@@ -183,13 +183,13 @@ class AdminController extends Controller
             'nama'  => 'required|string|max:255'
         ]);
 
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+        if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
 
         Type::create([
             'nama'  => $request->nama
         ]);
 
-        return redirect()->route('type')->with('success', 'Data Type Berhasil Ditambahkan');
+        return redirect()->route('type')->with('success', 'Data type berhasil ditambahkan');
     }
 
     public function typeEdit(Type $type){
@@ -206,15 +206,17 @@ class AdminController extends Controller
             abort(403);
         }
 
-        $request->validate([
+        $validator = Validator::make($request->all(),[
             'nama' => 'required|string|max:100|unique:types,nama,' . $type->id,
         ]);
+
+        if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
 
         $type->update([
             'nama' => $request->nama,
         ]);
 
-        return redirect()->route('type')->with('success', 'Type Berhasil Diperbarui');
+        return redirect()->route('type')->with('success', 'Type berhasil diperbarui');
     }
 
 
@@ -229,7 +231,7 @@ class AdminController extends Controller
             $type->delete();
         }
 
-        return redirect()->route('type')->with('success', 'Data Type Berhasil Dihapus');
+        return redirect()->route('type')->with('success', 'Data type berhasil dihapus');
     }
 
     // fungsi halaman admin jenjang
@@ -259,13 +261,13 @@ class AdminController extends Controller
             'nama'  => 'required|string|max:255'
         ]);
 
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+        if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
 
         Jenjang::create([
             'nama'  => $request->nama
         ]);
 
-        return redirect()->route('jenjang')->with('success', 'Data Jenjang Berhasil Ditambahkan');
+        return redirect()->route('jenjang')->with('success', 'Data jenjang berhasil ditambahkan');
     }
 
     public function jenjangEdit(Jenjang $jenjang){
@@ -282,15 +284,17 @@ class AdminController extends Controller
             abort(403);
         }
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:100|unique:jenjangs,nama,' . $jenjang->id,
         ]);
+
+        if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
 
         $jenjang->update([
             'nama' => $request->nama,
         ]);
 
-        return redirect()->route('jenjang')->with('success', 'Jenjang Berhasil Diperbarui');
+        return redirect()->route('jenjang')->with('success', 'Jenjang berhasil diperbarui');
     }
 
 
@@ -305,7 +309,7 @@ class AdminController extends Controller
             $jenjang->delete();
         }
 
-        return redirect()->route('jenjang')->with('success', 'Data Jenjang Berhasil Dihapus');
+        return redirect()->route('jenjang')->with('success', 'Data jenjang berhasil dihapus');
     }
 
     // fungsi halaman admin keahlian
@@ -335,13 +339,13 @@ class AdminController extends Controller
             'nama'  => 'required|string|max:255'
         ]);
 
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+        if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
 
         Keahlian::create([
             'nama'  => $request->nama
         ]);
 
-        return redirect()->route('keahlian')->with('success', 'Data Keahlian Berhasil Ditambahkan');
+        return redirect()->route('keahlian')->with('success', 'Data keahlian berhasil ditambahkan');
     }
 
     public function keahlianEdit(Keahlian $keahlian){
@@ -358,15 +362,17 @@ class AdminController extends Controller
             abort(403);
         }
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:100|unique:keahlians,nama,' . $keahlian->id,
         ]);
+
+        if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
 
         $keahlian->update([
             'nama' => $request->nama,
         ]);
 
-        return redirect()->route('keahlian')->with('success', 'Keahlian Berhasil Diperbarui');
+        return redirect()->route('keahlian')->with('success', 'Keahlian berhasil diperbarui');
     }
 
 
@@ -381,6 +387,6 @@ class AdminController extends Controller
             $keahlian->delete();
         }
 
-        return redirect()->route('keahlian')->with('success', 'Data Keahlian Berhasil Dihapus');
+        return redirect()->route('keahlian')->with('success', 'Data keahlian berhasil dihapus');
     }
 }

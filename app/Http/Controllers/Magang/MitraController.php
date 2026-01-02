@@ -50,7 +50,7 @@ class MitraController extends Controller
             'keterangan'    => 'required|max:255',
         ]);
 
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+        if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
 
         Lowongan::create([
             'id_mitra'      => Auth::user()->id,

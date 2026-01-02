@@ -12,7 +12,7 @@
                     
                     <!-- Slide 1 -->
                     <div class="min-w-full h-full relative">
-                        <img src="{{ asset('assets/img/hero.png') }}" alt="Slide 1" class="w-full h-full object-cover opacity-60 mix-blend-overlay" />
+                        <img src="{{ asset('assets/img/1.png') }}" alt="Slide 1" class="w-full h-full object-cover opacity-60 mix-blend-overlay" />
                         <!-- class="w-full h-full object-contain/cover opacity-60 mix-blend-overlay" -->
                         <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/50 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-8 md:p-16 w-full max-w-3xl">
@@ -29,7 +29,7 @@
 
                     <!-- Slide 2 -->
                     <div class="min-w-full h-full relative">
-                        <img src="{{ asset('assets/img/magang.png') }}" alt="Slide 2" class="w-full h-full object-cover opacity-50 mix-blend-overlay" />
+                        <img src="{{ asset('assets/img/2.png') }}" alt="Slide 2" class="w-full h-full object-cover opacity-50 mix-blend-overlay" />
                         <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/50 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-8 md:p-16 w-full max-w-3xl">
                             <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-white uppercase bg-royal-blue rounded-full shadow-[0_0_10px_rgba(37,99,235,0.5)]">
@@ -45,7 +45,7 @@
 
                     <!-- Slide 3 -->
                     <div class="min-w-full h-full relative">
-                        <img src="{{ asset('assets/img/banner2.jpeg') }}" alt="Slide 3" class="w-full h-full object-contain opacity-60 mix-blend-overlay" />
+                        <img src="{{ asset('assets/img/3.png') }}" alt="Slide 3" class="w-full h-full object-cover opacity-60 mix-blend-overlay" />
                         <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/50 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-8 md:p-16 w-full max-w-3xl">
                             <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-white uppercase bg-royal-blue rounded-full shadow-[0_0_10px_rgba(37,99,235,0.5)]">
@@ -53,9 +53,6 @@
                             </span>
                             <h2 class="text-4xl md:text-6xl font-bold mb-4 text-white leading-tight">Solusi <span class="text-transparent bg-clip-text bg-gradient-to-r from-royal-blue to-ice-blue">Digital</span></h2>
                             <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-xl">Transformasi bisnis Anda ke era digital dengan teknologi mutakhir.</p>
-                            <a href="#about" class="px-8 py-3 bg-white/10 hover:bg-white text-white hover:text-black border border-white rounded-xl backdrop-blur-sm transition-all duration-300 font-medium">
-                                Pelajari Lebih Lanjut
-                            </a>
                         </div>
                     </div>
 
@@ -99,45 +96,68 @@
                                 <strong>Silahkan hubungi kontak di bawah bila ada keluhan atau ingin bergabung menjadi mitra.</strong>
                             </p>
                         </div>
-                        <!-- <a href="#" class="inline-flex items-center text-royal-blue font-semibold hover:text-ice-blue hover:tracking-wide transition-all duration-300">
-                            Baca Selengkapnya 
-                            <i data-lucide="arrow-right" class="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform"></i>
-                        </a> -->
                     </div>
                 </div>
 
-                <!-- Kontak Card -->
                 <div id="contact" class="reveal group relative p-8 md:p-12 rounded-3xl bg-charcoal border border-white/5 hover:border-royal-blue/50 transition-all duration-500 overflow-hidden hover:shadow-[0_0_30px_rgba(37,99,235,0.1)]">
-                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 transform group-hover:scale-110">
+
+                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition duration-500">
                         <i data-lucide="mail" class="w-[120px] h-[120px] text-royal-blue"></i>
                     </div>
-                    <div class="relative z-10 flex flex-col h-full justify-between">
+
+                    <h3 class="text-3xl font-bold mb-6 text-white text-center">Hubungi Kami</h3>
+
+                    <form action="{{ route('kontakStore') }}" method="POST" class="space-y-6">
+                        @csrf
+
                         <div>
-                            <h3 class="text-3xl font-bold mb-4 text-white flex items-center gap-3">
-                                Kontak
-                                <div class="h-2 w-2 rounded-full bg-royal-blue opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            </h3>
-                            <div class="w-12 h-1 bg-gradient-to-r from-royal-blue to-transparent mb-6 group-hover:w-full transition-all duration-700"></div>
-                            <ul class="space-y-4 mb-8 text-mist">
-                                <li class="flex items-center gap-3 group/item">
-                                    <span class="w-2 h-2 bg-royal-blue rounded-full group-hover/item:animate-pulse"></span>
-                                    <span class="group-hover/item:text-white transition-colors">Yoogyakarta, Indonesia</span>
-                                </li>
-                                <li class="flex items-center gap-3 group/item">
-                                    <span class="w-2 h-2 bg-royal-blue rounded-full group-hover/item:animate-pulse"></span>
-                                    <span class="group-hover/item:text-white transition-colors">magangMania@gmail.com</span>
-                                </li>
-                                <li class="flex items-center gap-3 group/item">
-                                    <span class="w-2 h-2 bg-royal-blue rounded-full group-hover/item:animate-pulse"></span>
-                                    <span class="group-hover/item:text-white transition-colors">+62 889 8084 0381</span>
-                                </li>
-                            </ul>
+                            <label class="block text-sm text-neutral-400 mb-1">Nama</label>
+                            <input type="text" name="nama" value="{{ old('nama') }}" class="w-full bg-black/40 border border-neutral-700 rounded-lg px-4 py-2 text-white">
+                            @error('nama')
+                                <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
-                        <a href="" class="inline-flex items-center text-royal-blue font-semibold hover:text-ice-blue hover:tracking-wide transition-all duration-300">
-                            Hubungi Kami
-                            <i data-lucide="arrow-right" class="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform"></i>
-                        </a>
-                    </div>
+
+                        <div>
+                            <label class="block text-sm text-neutral-400 mb-1">Email</label>
+                            <input type="email" name="email" value="{{ old('email') }}" class="w-full bg-black/40 border border-neutral-700 rounded-lg px-4 py-2 text-white">
+                            @error('email')
+                                <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label class="block text-sm text-neutral-400 mb-1">Telephone</label>
+                            <input type="no_tlp" name="no_tlp" value="{{ old('no_tlp') }}" class="w-full bg-black/40 border border-neutral-700 rounded-lg px-4 py-2 text-white">
+                            @error('no_tlp')
+                                <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label class="block text-sm text-neutral-400 mb-1">Keperluan</label>
+                            <textarea name="keperluan" rows="5" class="w-full bg-black/40 border border-neutral-700 rounded-lg px-4 py-2 text-white">{{ old('keperluan') }}</textarea>
+                            @error('keperluan')
+                                <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="">
+                            <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
+
+                            @error('g-recaptcha-response')
+                                <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+                        <div class="flex justify-end gap-3">
+                            <button type="reset" class="px-6 py-2 rounded-lg bg-neutral-700">Reset</button>
+                            <button type="submit" class="px-6 py-2 rounded-lg bg-blue-600">Kirim</button>
+                        </div>
+
+                    </form>
                 </div>
 
             </div>

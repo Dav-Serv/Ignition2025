@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Magang Mania</title>
-    <link href="{{ asset('amikom.png') }}" rel="icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -44,6 +44,10 @@
 /* ==============================
    GLOBAL RESET & LAYOUT
 ============================== */
+.logo{
+  height: 60px;
+}
+
 html, body {
   height: 100%;
 }
@@ -316,7 +320,7 @@ tbody tr:hover {
                   <a href="{{ route('type') }}" class="text-gray-400 hover:text-blue-400 transition">Type</a>
                   <a href="{{ route('jenjang') }}" class="text-gray-400 hover:text-blue-400 transition">Jenjang</a>
                   <a href="{{ route('keahlian') }}" class="text-gray-400 hover:text-blue-400 transition">Keahlian</a>
-                  <a href="#contact" class="text-gray-400 hover:text-blue-400 transition">Kontak</a>
+                  <a href="{{ route('kontak') }}" class="text-gray-400 hover:text-blue-400 transition">Kontak</a>
                 @endif
 
                 @if(Auth::user()->role === 'mitra')
@@ -327,10 +331,6 @@ tbody tr:hover {
                   <a href="{{ route('lamar') }}" class="text-gray-400 hover:text-blue-400 transition">Lamaran</a>
                 @endif
               @endauth
-              
-              @if(!Auth::check())
-              <a href="{{ route('dashboard', '#contact') }}" class="text-gray-400 hover:text-blue-400 transition">Kontak</a>
-              @endif
             </div>
 
             <!-- Auth Button -->
@@ -344,6 +344,11 @@ tbody tr:hover {
               </button>
             </form>
             @else
+            <a href="{{ route('register') }}"
+              class="border border-white text-white px-5 py-2 rounded-full text-sm font-bold
+                      hover:bg-white hover:text-black transition duration-200">
+              Register
+            </a>
             <a href="{{ route('login') }}"
               class="bg-white text-black hover:bg-blue-600 hover:text-white
                       px-5 py-2 rounded-full text-sm font-bold transition">
@@ -376,6 +381,7 @@ tbody tr:hover {
               <a href="{{ route('type') }}" class="block px-3 py-2 rounded text-gray-300 hover:bg-white/10">Type</a>
               <a href="{{ route('jenjang') }}" class="block px-3 py-2 rounded text-gray-300 hover:bg-white/10">Jenjang</a>
               <a href="{{ route('keahlian') }}" class="block px-3 py-2 rounded text-gray-300 hover:bg-white/10">Keahlian</a>
+              <a href="{{ route('kontak') }}" class="block px-3 py-2 rounded text-gray-300 hover:bg-white/10">Kontak</a>
             @endif
 
             @if(Auth::user()->role === 'mitra')
@@ -386,10 +392,6 @@ tbody tr:hover {
               <a href="{{ route('lamar') }}" class="block px-3 py-2 rounded text-gray-300 hover:bg-white/10">Lamaran</a>
             @endif
           @endauth
-
-          @if(!Auth::check())
-            <a href="#contact" class="block px-3 py-2 rounded text-gray-300 hover:bg-white/10">Kontak</a>
-          @endif
 
           @auth
           <form action="{{ route('logout') }}" method="POST" class="pt-3">

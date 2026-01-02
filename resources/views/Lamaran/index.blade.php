@@ -157,7 +157,9 @@
                         <td class="text-center">
                             <div class="flex justify-center gap-2">
                                 <a href="{{ route('lamarPreview', $l->id) }}?v={{ $l->updated_at->timestamp }}" target="_blank" title="Preview CV" class="icon-btn">👁️</a>
+                                @if ($l->status !== 'diterima')
                                 <a href="{{ route('lamarEdit', $l->id) }}" class="icon-btn">✏️</a>
+                                @endif
                                 <form action="{{ route('lamarHapus', $l->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -285,10 +287,12 @@
                        class="flex-1 text-center bg-yellow-500 py-2 rounded-lg text-sm font-semibold">
                         Lihat
                     </a>
+                    @if ($l->status !== 'diterima')
                     <a href="{{ route('lamarEdit', $l->id) }}"
                        class="flex-1 text-center bg-blue-600 py-2 rounded-lg text-sm font-semibold">
                         Edit
                     </a>
+                    @endif
                     <form action="{{ route('lamarHapus', $l->id) }}" method="POST" class="flex-1">
                         @csrf
                         @method('DELETE')
