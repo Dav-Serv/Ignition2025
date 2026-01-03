@@ -48,6 +48,23 @@ class MitraController extends Controller
             'keahlian'      => 'required|exists:keahlians,id',
             'job'           => 'required|string|max:255',
             'keterangan'    => 'required|max:255',
+        ], [
+            // Custom messages
+            'type.required'         => 'Type wajib dipilih.',
+            'type.exists'           => 'Type tidak valid.',
+
+            'jenjang.required'      => 'Jenjang wajib dipilih.',
+            'jenjang.exists'        => 'Jenjang tidak valid.',
+
+            'keahlian.required'     => 'Keahlian wajib dipilih.',
+            'keahlian.exists'       => 'Keahlian tidak valid.',
+
+            'job.required'          => 'Job wajib diisi.',
+            'job.string'            => 'Job harus berupa teks.',
+            'job.max'               => 'Job maksimal 255 karakter.',
+
+            'keterangan.required'   => 'Keterangan wajib diisi.',
+            'keterangan.max'        => 'Keterangan maksimal 255 karakter.',
         ]);
 
         if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
@@ -87,6 +104,23 @@ class MitraController extends Controller
             'keahlian'      => 'required|exists:keahlians,id',
             'job'           => 'required|string|max:255',
             'keterangan'    => 'required|max:255',
+        ], [
+            // Custom messages
+            'type.required'         => 'Type wajib dipilih.',
+            'type.exists'           => 'Type tidak valid.',
+
+            'jenjang.required'      => 'Jenjang wajib dipilih.',
+            'jenjang.exists'        => 'Jenjang tidak valid.',
+
+            'keahlian.required'     => 'Keahlian wajib dipilih.',
+            'keahlian.exists'       => 'Keahlian tidak valid.',
+
+            'job.required'          => 'Job wajib diisi.',
+            'job.string'            => 'Job harus berupa teks.',
+            'job.max'               => 'Job maksimal 255 karakter.',
+
+            'keterangan.required'   => 'Keterangan wajib diisi.',
+            'keterangan.max'        => 'Keterangan maksimal 255 karakter.',
         ]);
 
         if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);

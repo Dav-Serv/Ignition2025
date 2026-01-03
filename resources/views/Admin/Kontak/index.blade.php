@@ -130,7 +130,7 @@ function hapusData(button) {
 
     Swal.fire({
         title: 'Yakin ingin hapus?',
-        text: 'Data kontak akan dihapus permanen.',
+        text: 'Anda akan Menghapus Data Kontak Pesan.',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Ya, Hapus',

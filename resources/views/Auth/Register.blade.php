@@ -206,7 +206,7 @@
                 @enderror
 
                 <div class="flex flex-col gap-2">
-                  <label class="text-sm font-medium text-zinc-400 ml-1">Dokumen Pendukung</label>
+                  <label class="text-sm font-medium text-zinc-400 ml-1">Foto Profile</label>
                   <div class="flex items-center gap-2">
                     <div class="relative flex-1">
                       <div class="w-full px-4 py-3 md:py-3.5 rounded-xl bg-zinc-900/50 border border-zinc-800 text-zinc-400 text-sm flex items-center gap-2 overflow-hidden">

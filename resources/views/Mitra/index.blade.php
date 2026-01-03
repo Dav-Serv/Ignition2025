@@ -138,7 +138,7 @@ function hapusUser(button) {
     const form = button.closest('form');
     Swal.fire({
         title: 'Yakin ingin Hapus?',
-        text: 'Anda akan Menghapus Data User.',
+        text: 'Anda akan Menghapus Data Lowongan.',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Ya, Hapus',

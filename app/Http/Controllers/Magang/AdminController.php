@@ -51,6 +51,52 @@ class AdminController extends Controller
             'role'                => 'required|in:admin,mitra,pengguna',
             'alamat'              => 'required|max:255',
             'password'            => 'required|min:8',
+        ], [
+            // FOTO
+            'foto.required' => 'Foto wajib diupload.',
+            'foto.image'    => 'File harus berupa gambar.',
+            'foto.mimes'    => 'Format foto harus jpg, jpeg, png, atau gif.',
+            'foto.max'      => 'Ukuran foto maksimal 2 MB.',
+
+            // NAMA
+            'nama.required' => 'Nama tidak boleh kosong.',
+            'nama.max'      => 'Nama maksimal 255 karakter.',
+
+            // TEMPAT LAHIR
+            'tmpl.required' => 'Tempat lahir wajib diisi.',
+
+            // TANGGAL LAHIR
+            'tgll.required' => 'Tanggal lahir wajib diisi.',
+            'tgll.date'     => 'Format tanggal lahir tidak valid.',
+
+            // JENIS KELAMIN
+            'jk.required'   => 'Jenis kelamin wajib dipilih.',
+            'jk.in'         => 'Jenis kelamin harus L atau P.',
+
+            // JENJANG
+            'jenjang.required' => 'Jenjang pendidikan wajib dipilih.',
+            'jenjang.in'       => 'Jenjang harus SMK, S1/D4, atau D3.',
+
+            // EMAIL
+            'email.required' => 'Email wajib diisi.',
+            'email.email'    => 'Format email tidak valid.',
+            'email.unique'   => 'Email sudah digunakan.',
+
+            // NOMOR TELEPON
+            'no_tlp.required'        => 'Nomor telepon wajib diisi.',
+            'no_tlp.digits_between'  => 'Nomor telepon harus 10–15 angka.',
+
+            // ROLE
+            'role.required' => 'Role wajib dipilih.',
+            'role.in'       => 'Role tidak valid.',
+
+            // ALAMAT
+            'alamat.required' => 'Alamat wajib diisi.',
+            'alamat.max'      => 'Alamat maksimal 255 karakter.',
+
+            // PASSWORD
+            'password.required' => 'Password wajib diisi.',
+            'password.min'      => 'Password minimal 8 karakter.',
         ]);
         
         if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
@@ -101,6 +147,52 @@ class AdminController extends Controller
             'role'                => 'required|in:admin,mitra,pengguna',
             'alamat'              => 'required|max:255',
             'password'            => 'nullable|min:8',
+        ], [
+            // FOTO
+            'foto.required' => 'Foto wajib diupload.',
+            'foto.image'    => 'File harus berupa gambar.',
+            'foto.mimes'    => 'Format foto harus jpg, jpeg, png, atau gif.',
+            'foto.max'      => 'Ukuran foto maksimal 2 MB.',
+
+            // NAMA
+            'nama.required' => 'Nama tidak boleh kosong.',
+            'nama.max'      => 'Nama maksimal 255 karakter.',
+
+            // TEMPAT LAHIR
+            'tmpl.required' => 'Tempat lahir wajib diisi.',
+
+            // TANGGAL LAHIR
+            'tgll.required' => 'Tanggal lahir wajib diisi.',
+            'tgll.date'     => 'Format tanggal lahir tidak valid.',
+
+            // JENIS KELAMIN
+            'jk.required'   => 'Jenis kelamin wajib dipilih.',
+            'jk.in'         => 'Jenis kelamin harus L atau P.',
+
+            // JENJANG
+            'jenjang.required' => 'Jenjang pendidikan wajib dipilih.',
+            'jenjang.in'       => 'Jenjang harus SMK, S1/D4, atau D3.',
+
+            // EMAIL
+            'email.required' => 'Email wajib diisi.',
+            'email.email'    => 'Format email tidak valid.',
+            'email.unique'   => 'Email sudah digunakan.',
+
+            // NOMOR TELEPON
+            'no_tlp.required'        => 'Nomor telepon wajib diisi.',
+            'no_tlp.digits_between'  => 'Nomor telepon harus 10–15 angka.',
+
+            // ROLE
+            'role.required' => 'Role wajib dipilih.',
+            'role.in'       => 'Role tidak valid.',
+
+            // ALAMAT
+            'alamat.required' => 'Alamat wajib diisi.',
+            'alamat.max'      => 'Alamat maksimal 255 karakter.',
+
+            // PASSWORD
+            'password.required' => 'Password wajib diisi.',
+            'password.min'      => 'Password minimal 8 karakter.',
         ]);
         
         if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
@@ -179,8 +271,14 @@ class AdminController extends Controller
             abort(403);
         }
 
-        $validator = Validator::make($request->all(),[
-            'nama'  => 'required|string|max:255'
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|string|max:255|unique:types,nama',
+        ], [
+            // messages
+            'nama.required' => 'Nama type wajib diisi.',
+            'nama.string'   => 'Nama type harus berupa teks.',
+            'nama.max'      => 'Nama type maksimal 255 karakter.',
+            'nama.unique'   => 'Nama type sudah ada, gunakan nama lain.',
         ]);
 
         if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
@@ -208,6 +306,12 @@ class AdminController extends Controller
 
         $validator = Validator::make($request->all(),[
             'nama' => 'required|string|max:100|unique:types,nama,' . $type->id,
+        ], [
+            // messages
+            'nama.required' => 'Nama type wajib diisi.',
+            'nama.string'   => 'Nama type harus berupa teks.',
+            'nama.max'      => 'Nama type maksimal 255 karakter.',
+            'nama.unique'   => 'Nama type sudah ada, gunakan nama lain.',
         ]);
 
         if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
@@ -257,8 +361,14 @@ class AdminController extends Controller
             abort(403);
         }
 
-        $validator = Validator::make($request->all(),[
-            'nama'  => 'required|string|max:255'
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|string|max:255|unique:jenjangs,nama',
+        ], [
+            // messages
+            'nama.required' => 'Nama jenjang wajib diisi.',
+            'nama.string'   => 'Nama jenjang harus berupa teks.',
+            'nama.max'      => 'Nama jenjang maksimal 255 karakter.',
+            'nama.unique'   => 'Nama jenjang sudah ada, gunakan nama lain.',
         ]);
 
         if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
@@ -286,6 +396,12 @@ class AdminController extends Controller
 
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:100|unique:jenjangs,nama,' . $jenjang->id,
+        ], [
+            // messages
+            'nama.required' => 'Nama jenjang wajib diisi.',
+            'nama.string'   => 'Nama jenjang harus berupa teks.',
+            'nama.max'      => 'Nama jenjang maksimal 255 karakter.',
+            'nama.unique'   => 'Nama jenjang sudah ada, gunakan nama lain.',
         ]);
 
         if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
@@ -335,8 +451,14 @@ class AdminController extends Controller
             abort(403);
         }
 
-        $validator = Validator::make($request->all(),[
-            'nama'  => 'required|string|max:255'
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|string|max:255|unique:keahlians,nama',
+        ], [
+            // messages
+            'nama.required' => 'Nama keahlian wajib diisi.',
+            'nama.string'   => 'Nama keahlian harus berupa teks.',
+            'nama.max'      => 'Nama keahlian maksimal 255 karakter.',
+            'nama.unique'   => 'Nama keahlian sudah ada, gunakan nama lain.',
         ]);
 
         if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
@@ -364,6 +486,12 @@ class AdminController extends Controller
 
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:100|unique:keahlians,nama,' . $keahlian->id,
+        ], [
+            // messages
+            'nama.required' => 'Nama keahlian wajib diisi.',
+            'nama.string'   => 'Nama keahlian harus berupa teks.',
+            'nama.max'      => 'Nama keahlian maksimal 255 karakter.',
+            'nama.unique'   => 'Nama keahlian sudah ada, gunakan nama lain.',
         ]);
 
         if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();

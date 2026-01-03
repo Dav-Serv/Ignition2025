@@ -97,7 +97,7 @@ function hapusData(button) {
 
     Swal.fire({
         title: 'Yakin ingin hapus?',
-        text: 'Data keahlian akan dihapus permanen.',
+        text: 'Anda akan Menghapus Data Keahlian.',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Ya, Hapus',
