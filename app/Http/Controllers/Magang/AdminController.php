@@ -345,7 +345,7 @@ class AdminController extends Controller
         }
 
         $jenjangs = Jenjang::paginate(5);
-        return view('Admin.jenjang.index', compact('jenjangs'));
+        return view('Admin.Jenjang.index', compact('jenjangs'));
     }
 
     function jenjangTambah(){
@@ -353,7 +353,7 @@ class AdminController extends Controller
             abort(403);
         }
 
-        return view('Admin.jenjang.create');
+        return view('Admin.Jenjang.create');
     }
 
     function jenjangStore(Request $request){
@@ -385,7 +385,7 @@ class AdminController extends Controller
             abort(403);
         }
 
-        return view('Admin.jenjang.edit', compact('jenjang'));
+        return view('Admin.Jenjang.edit', compact('jenjang'));
     }
 
 
@@ -435,7 +435,7 @@ class AdminController extends Controller
         }
 
         $keahlians = Keahlian::paginate(5);
-        return view('Admin.keahlian.index', compact('keahlians'));
+        return view('Admin.Keahlian.index', compact('keahlians'));
     }
 
     function keahlianTambah(){
@@ -443,7 +443,7 @@ class AdminController extends Controller
             abort(403);
         }
 
-        return view('Admin.keahlian.create');
+        return view('Admin.Keahlian.create');
     }
 
     function keahlianStore(Request $request){
@@ -475,7 +475,7 @@ class AdminController extends Controller
             abort(403);
         }
 
-        return view('Admin.keahlian.edit', compact('keahlian'));
+        return view('Admin.Keahlian.edit', compact('keahlian'));
     }
 
 
