@@ -15,6 +15,23 @@
         </a>
     </div>
 
+    <form onsubmit="return false" class="w-full max-w-2xl relative group mb-8">
+        <div class="absolute inset-0 bg-blue-500/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition"></div>
+
+        <div class="relative flex items-center bg-[#151515] border border-white/10 rounded-full pl-6 pr-2 py-2">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Cari Jenjang..."
+                class="flex-1 bg-transparent border-none focus:outline-none text-white h-12 text-lg">
+
+            <button type="button"
+                    class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-black">
+                <i data-lucide="search" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </form>
+
     <!-- DESKTOP TABLE -->
     <div class="hidden md:block glass overflow-x-auto">
         <table class="w-full">
@@ -27,7 +44,7 @@
             </thead>
             <tbody>
                 @forelse($jenjangs as $j)
-                    <tr>
+                    <tr class="jenjang-row">
                         <td>{{ $jenjangs->firstItem() + $loop->index }}</td>
                         <td class="font-medium text-white">{{ $j->nama }}</td>
                         <td class="text-center">
@@ -60,7 +77,7 @@
     <!-- MOBILE CARD -->
     <div class="md:hidden space-y-4">
         @forelse($jenjangs as $j)
-            <div class="glass p-4 rounded-xl">
+            <div class="glass p-4 rounded-xl jenjang-card">
                 <p class="font-semibold text-white">{{ $j->nama }}</p>
 
                 <div class="flex gap-2 mt-4">
@@ -109,4 +126,32 @@ function hapusData(button) {
     });
 }
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("searchInput");
+
+    const rows = document.querySelectorAll(".jenjang-row");
+    const cards = document.querySelectorAll(".jenjang-card");
+
+    function filterJenjang() {
+        const q = searchInput.value.toLowerCase().trim();
+
+        // Desktop
+        rows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.classList.toggle("hidden", !text.includes(q));
+        });
+
+        // Mobile
+        cards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.classList.toggle("hidden", !text.includes(q));
+        });
+    }
+
+    searchInput.addEventListener("input", filterJenjang);
+});
+</script>
+
 @endsection

@@ -12,6 +12,23 @@
 
     </div>
 
+    <form onsubmit="return false" class="w-full max-w-8xl relative group mb-8">
+        <div class="absolute inset-0 bg-blue-500/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition"></div>
+
+        <div class="relative flex items-center bg-[#151515] border border-white/10 rounded-full pl-6 pr-2 py-2">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Cari nama, email, jenis kelamin, job, alamat, dll..."
+                class="flex-1 bg-transparent border-none focus:outline-none text-white h-12 text-lg">
+
+            <button type="button"
+                    class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-black">
+                <i data-lucide="search" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </form>
+
     <!-- DESKTOP TABLE -->
     <div class="hidden md:block glass overflow-x-auto">
         <!-- Mitra -->
@@ -37,7 +54,7 @@
             </thead>
             <tbody>
                 @forelse($lamarans as $l)
-                    <tr>
+                    <tr class="lamaran-row">
                         <!-- NOMOR TIDAK RESET -->
                         <td>{{ $lamarans->firstItem() + $loop->index }}</td>
 
@@ -117,7 +134,7 @@
             </thead>
             <tbody>
                 @forelse($lamarans as $l)
-                    <tr>
+                    <tr class="lamaran-row">
                         <!-- NOMOR TIDAK RESET -->
                         <td>{{ $lamarans->firstItem() + $loop->index }}</td>
 
@@ -185,7 +202,7 @@
         <!-- Mitra -->
         @if(Auth::user()->role === "mitra")
         @forelse($lamarans as $l)
-            <div class="glass p-4 rounded-xl">
+            <div class="glass p-4 rounded-xl lamaran-card">
                 <div class="flex items-center gap-4">
                     @if($l->pengguna?->foto)
                         <img src="{{ asset('storage/'.$l->pengguna?->foto) }}" class="w-12 h-12 rounded-full object-cover">
@@ -246,7 +263,7 @@
         <!-- Pengguna -->
         @if(Auth::user()->role === "pengguna")
         @forelse($lamarans as $l)
-            <div class="glass p-4 rounded-xl">
+            <div class="glass p-4 rounded-xl lamaran-card">
                 <div class="flex items-center gap-4">
                     @if($l->lowongan?->mitra?->foto)
                         <img src="{{ asset('storage/'.$l->lowongan?->mitra?->foto) }}" class="w-12 h-12 rounded-full object-cover">
@@ -333,5 +350,32 @@ function hapusUser(button) {
         }
     });
 }
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("searchInput");
+
+    const rows = document.querySelectorAll(".lamaran-row");
+    const cards = document.querySelectorAll(".lamaran-card");
+
+    function filterLamaran() {
+        const q = searchInput.value.toLowerCase().trim();
+
+        // Desktop
+        rows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.classList.toggle("hidden", !text.includes(q));
+        });
+
+        // Mobile
+        cards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.classList.toggle("hidden", !text.includes(q));
+        });
+    }
+
+    searchInput.addEventListener("input", filterLamaran);
+});
 </script>
 @endsection
