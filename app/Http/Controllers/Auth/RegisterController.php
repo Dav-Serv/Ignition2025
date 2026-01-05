@@ -87,7 +87,6 @@ class RegisterController extends Controller
             'no_tlp'        => $request->no_tlp,
             'foto'          => $imagePath,
             'email'         => $request->email,
-            'role'          => 'admin',
             'password'      => Hash::make($request->password)
         ]);
 
