@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 class RegisterController extends Controller
 {
     public function index(){
-        return view('Auth.register');
+        return view('Auth.Register');
     }
 
     public function register(Request $request){

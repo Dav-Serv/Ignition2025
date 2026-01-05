@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class LoginController extends Controller
 {
     function index(){
-        return view('Auth.login');
+        return view('Auth.Login');
     }
 
     function login(Request $request){
