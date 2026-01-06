@@ -300,10 +300,11 @@ tbody tr:hover {
             <img src="{{ asset('assets/img/magang3.png') }}" alt="Logo" class="w-[180px]">
 
             @auth
-              <span class="hidden sm:block text-sm font-semibold text-gray-300">
+              <span class="ml-1 text-[11px] sm:text-xs font-medium text-gray-400">
                 {{ Auth::user()->nama }} ({{ Auth::user()->role }})
               </span>
             @endauth
+
           </div>
 
           <!-- RIGHT : Desktop Menu + Auth -->
@@ -608,6 +609,12 @@ tbody tr:hover {
         <script>
             swal("Thanks!", "{{ $message }}", "success");
         </script>
+    @endif
+
+    @if ($errors->any())
+    <script>
+        swal("Error!", "{!! implode('\n', $errors->all()) !!}", "error");
+    </script>
     @endif
   </body>
 </html>

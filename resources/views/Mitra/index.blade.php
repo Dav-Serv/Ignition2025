@@ -16,7 +16,7 @@
         </a>
     </div>
 
-    <form onsubmit="return false" class="w-full max-w-6xl relative group mb-8">
+    <form onsubmit="return false" class="w-full max-w-10xl relative group mb-8">
         <div class="absolute inset-0 bg-blue-500/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition"></div>
 
         <div class="relative flex items-center bg-[#151515] border border-white/10 rounded-full pl-6 pr-2 py-2">

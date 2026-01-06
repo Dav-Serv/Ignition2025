@@ -414,5 +414,12 @@
         }
       }
     </script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @if ($errors->any())
+    <script>
+        swal("Error!", "{!! implode('\n', $errors->all()) !!}", "error");
+    </script>
+    @endif
   </body>
 </html>
