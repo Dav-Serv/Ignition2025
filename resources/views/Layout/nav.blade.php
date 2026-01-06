@@ -404,6 +404,21 @@ tbody tr:hover {
             </button>
           </form>
           @else
+          <a
+              href="{{ route('register') }}"
+              class="inline-flex justify-center items-center
+                    w-full md:w-auto
+                    px-5 py-2
+                    rounded-full
+                    border border-white
+                    text-white font-semibold
+                    bg-transparent
+                    hover:bg-white hover:text-black
+                    transition duration-200"
+          >
+              Register
+          </a>
+
           <a href="{{ route('login') }}"
             class="block w-full text-center bg-blue-600 hover:bg-blue-700
                     text-white py-3 rounded-lg font-bold transition">

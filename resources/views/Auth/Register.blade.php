@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Magang Mania</title>
-    <link href="{{ asset('amikom.png') }}" rel="icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16.png') }}">
     
     <!-- Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
