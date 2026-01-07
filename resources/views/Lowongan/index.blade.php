@@ -132,7 +132,7 @@
                         </div>
                         <div class="flex items-center gap-4 mt-auto">
                             <div class="relative">
-                                <img src="{{ Storage::disk('s3')->url($l->mitra?->foto) }}" alt="TechVision Corp" class="w-12 h-12 rounded-full object-cover border border-white/10 opacity-80 group-hover:opacity-100 transition-opacity">
+                                <img src="{{ Storage::url($l->mitra?->foto) }}" alt="TechVision Corp" class="w-12 h-12 rounded-full object-cover border border-white/10 opacity-80 group-hover:opacity-100 transition-opacity">
                                 <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-[#0f0f0f]" title="Verified"></div>
                             </div>
                             <div class="flex-1 min-w-0">

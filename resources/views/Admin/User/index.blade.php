@@ -57,7 +57,7 @@
                         <!-- FOTO -->
                         <td class="text-center">
                             @if($u->foto)
-                                <img src="{{ Storage::disk('s3')->url($u->foto) }}"
+                                <img src="{{ Storage::url($u->foto) }}"
                                      class="w-10 h-10 rounded-full object-cover mx-auto border border-white/10">
                             @else
                                 <div class="w-10 h-10 rounded-full bg-neutral-700 flex items-center justify-center mx-auto text-xs text-neutral-300">
@@ -115,7 +115,7 @@
             <div class="glass p-4 rounded-xl user-card">
                 <div class="flex items-center gap-4">
                     @if($u->foto)
-                        <img src="{{ Storage::disk('s3')->url($u->foto) }}" class="w-12 h-12 rounded-full object-cover">
+                        <img src="{{ Storage::url($u->foto) }}" class="w-12 h-12 rounded-full object-cover">
                     @else
                         <div class="w-12 h-12 rounded-full bg-neutral-700 flex items-center justify-center text-xs">
                             N/A

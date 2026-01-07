@@ -22,7 +22,7 @@
                 <label class="block text-xs text-neutral-400 mb-1">Foto Profil</label>
 
                 @if($user->foto)
-                    <img src="{{ Storage::disk('s3')->url($user->foto) }}"
+                    <img src="{{ Storage::url($user->foto) }}"
                          class="w-16 h-16 rounded-full object-cover mb-3 border border-white/10">
                 @endif
 
