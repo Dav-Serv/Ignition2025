@@ -74,7 +74,7 @@ class RegisterController extends Controller
         if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
 
         if ($request->hasFile('foto')) {
-            $imagePath = $request->file('foto')->store('users', 'public');
+            $imagePath = $request->file('foto')->store('users', 's3');
         }
         
         User::create([
