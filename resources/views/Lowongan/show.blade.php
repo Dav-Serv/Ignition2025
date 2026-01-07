@@ -63,7 +63,7 @@
         <!-- Company -->
         <div class="bg-[#0f0f0f] border border-white/5 rounded-2xl p-8 mb-8">
             <div class="flex items-center gap-4">
-                <img src="{{ asset('storage/'.$lowongan->mitra?->foto) }}"
+                <img src="{{ Storage::disk('s3')->url($lowongan->mitra?->foto) }}" src="{{ asset('storage/'.$lowongan->mitra?->foto) }}"
                      class="w-16 h-16 rounded-full object-cover border border-white/10">
                 <div>
                     <h3 class="text-lg font-semibold">

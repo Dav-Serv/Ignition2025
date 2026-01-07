@@ -47,7 +47,7 @@ class LamaranController extends Controller
         }
 
         // simpan cv di local
-        $cvPath = $request->file('cv')->store('cv', 'public');
+        $cvPath = $request->file('cv')->store('cv', 's3');
 
         Lamaran::create([
             'id_lowongan'       => $lowongan->id,
@@ -130,7 +130,7 @@ class LamaranController extends Controller
             }
 
             $lamaran->update([
-                'cv' => $request->file('cv')->store('cv', 'public'),
+                'cv' => $request->file('cv')->store('cv', 's3'),
             ]);
 
             return redirect()->route('lamar')

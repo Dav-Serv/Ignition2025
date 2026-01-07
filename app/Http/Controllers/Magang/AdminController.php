@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Magang;
 use App\Http\Controllers\Controller;
 use App\Models\Jenjang;
 use App\Models\Keahlian;
+use App\Models\Lamaran;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -102,7 +103,7 @@ class AdminController extends Controller
         if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
         
         if ($request->hasFile('foto')) {
-            $imagePath = $request->file('foto')->store('users', 'public');
+            $imagePath = $request->file('foto')->store('users', 's3');
         }
 
         User::create([
@@ -220,7 +221,7 @@ class AdminController extends Controller
                 Storage::disk('public')->delete($user->foto);
             }
 
-            $data['foto'] = $request->file('foto')->store('users', 'public');
+            $data['foto'] = $request->file('foto')->store('users', 's3');
         }
 
         // update data user
@@ -230,23 +231,25 @@ class AdminController extends Controller
     }
 
     function userHapus($user){
-        if(Auth::user()->role !== 'admin'){
+        if (Auth::user()->role !== 'admin') {
             abort(403);
         }
 
         $user = User::findOrFail($user);
 
-        //hapus foto dari local
-        if ($user->foto && Storage::disk('public')->exists($user->foto)) {
-            Storage::disk('public')->delete($user->foto);
+        // hapus semua lamaran milik user
+        Lamaran::where('id_pengguna', $user->id)->delete();
+
+        // hapus foto dari S3
+        if ($user->foto && Storage::disk('s3')->exists($user->foto)) {
+            Storage::disk('s3')->delete($user->foto);
         }
 
-        if($user){
-            $user->delete();
-        }
+        $user->delete();
 
-        return redirect()->route('user')->with('success','Data user berhasil dihapus');
+        return redirect()->route('user')->with('success', 'Data user dan semua lamarannya berhasil dihapus');
     }
+
 
     // fungsi halaman admin type
     function type(){

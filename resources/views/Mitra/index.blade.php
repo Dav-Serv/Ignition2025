@@ -58,7 +58,7 @@
                         <!-- FOTO -->
                         <td class="text-center">
                             @if($m->mitra?->foto)
-                                <img src="{{ asset('storage/'.$m->mitra?->foto) }}"
+                                <img src="{{ Storage::disk('s3')->url($m->mitra?->foto) }}"
                                      class="w-10 h-10 rounded-full object-cover mx-auto border border-white/10">
                             @else
                                 <div class="w-10 h-10 rounded-full bg-neutral-700 flex items-center justify-center mx-auto text-xs text-neutral-300">
@@ -102,7 +102,7 @@
             <div class="glass p-4 rounded-xl mitra-card">
                 <div class="flex items-center gap-4">
                     @if($m->mitra?->foto)
-                        <img src="{{ asset('storage/'.$m->mitra?->foto) }}" class="w-12 h-12 rounded-full object-cover">
+                        <img src="{{ Storage::disk('s3')->url($m->mitra?->foto) }}" class="w-12 h-12 rounded-full object-cover">
                     @else
                         <div class="w-12 h-12 rounded-full bg-neutral-700 flex items-center justify-center text-xs">
                             N/A
