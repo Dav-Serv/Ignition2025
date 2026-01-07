@@ -25,7 +25,7 @@ class RegisterController extends Controller
             'jenjang'       => 'required|in:smk,S1/D4,D3',
             'alamat'        => 'required|max:255',
             'no_tlp'        => 'required|digits_between:10,15',
-            'foto'          => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+            'foto'          => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
             'email'         => 'required|email|unique:users,email',
             'password'      => 'required|min:8'
         ], [
@@ -57,9 +57,10 @@ class RegisterController extends Controller
             'no_tlp.digits_between' => 'Nomor telepon harus 10-15 digit angka.',
 
             // FOTO
-            'foto.image' => 'File foto harus berupa gambar.',
-            'foto.mimes' => 'Format foto harus JPG, JPEG, PNG, atau GIF.',
-            'foto.max'   => 'Ukuran foto maksimal 2 MB.',
+            'foto.required' => 'Foto wajib diisi.',
+            'foto.image'    => 'File foto harus berupa gambar.',
+            'foto.mimes'    => 'Format foto harus JPG, JPEG, PNG, atau GIF.',
+            'foto.max'      => 'Ukuran foto maksimal 2 MB.',
 
             // EMAIL
             'email.required' => 'Email wajib diisi.',
