@@ -83,13 +83,20 @@ class LamaranController extends Controller
             abort(403);
         }
 
-        if (! $lamaran->cv || ! Storage::disk('public')->exists($lamaran->cv)) {
+        // jika belum ada file
+        if (! $lamaran->cv) {
             abort(404, 'CV tidak ditemukan.');
         }
 
-        return response()->file(
-            storage_path('app/public/'.$lamaran->cv)
-        );
+        // cek file di S3
+        if (! Storage::exists($lamaran->cv)) {
+            abort(404, 'CV tidak ditemukan.');
+        }
+
+        // ambil URL file
+        $url = Storage::url($lamaran->cv);
+
+        return redirect($url);
     }
 
     public function lamarEdit(Lamaran $lamaran){

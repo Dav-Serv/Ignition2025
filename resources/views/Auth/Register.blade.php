@@ -78,14 +78,14 @@
               <div class="space-y-4 md:space-y-5">
                 <div class="flex flex-col gap-2 w-full group">
                   <label class="text-sm font-medium text-zinc-400 ml-1 transition-colors group-focus-within:text-indigo-400">Email Address</label>
-                  <input type="email" name="email" placeholder="nama@email.com" class="w-full px-4 py-3 md:py-3.5 rounded-xl bg-zinc-900/50 border border-zinc-800 text-zinc-100 placeholder-zinc-600 outline-none transition-all duration-300 focus:border-indigo-500/50 focus:bg-zinc-900 focus:ring-4 focus:ring-indigo-500/10 hover:border-zinc-700">
+                  <input value="{{ old('email') }}" type="email" name="email" placeholder="nama@email.com" class="w-full px-4 py-3 md:py-3.5 rounded-xl bg-zinc-900/50 border border-zinc-800 text-zinc-100 placeholder-zinc-600 outline-none transition-all duration-300 focus:border-indigo-500/50 focus:bg-zinc-900 focus:ring-4 focus:ring-indigo-500/10 hover:border-zinc-700">
                 </div>
                 @error('email')
                   <small>{{ $message }}</small>
                 @enderror
                 <div class="flex flex-col gap-2 w-full group">
                   <label class="text-sm font-medium text-zinc-400 ml-1 transition-colors group-focus-within:text-indigo-400">Password</label>
-                  <input type="password" name="password" placeholder="••••••••" class="w-full px-4 py-3 md:py-3.5 rounded-xl bg-zinc-900/50 border border-zinc-800 text-zinc-100 placeholder-zinc-600 outline-none transition-all duration-300 focus:border-indigo-500/50 focus:bg-zinc-900 focus:ring-4 focus:ring-indigo-500/10 hover:border-zinc-700">
+                  <input value="{{ old('password') }}" type="password" name="password" placeholder="••••••••" class="w-full px-4 py-3 md:py-3.5 rounded-xl bg-zinc-900/50 border border-zinc-800 text-zinc-100 placeholder-zinc-600 outline-none transition-all duration-300 focus:border-indigo-500/50 focus:bg-zinc-900 focus:ring-4 focus:ring-indigo-500/10 hover:border-zinc-700">
                 </div>
                 @error('password')
                   <small>{{ $message }}</small>
@@ -119,7 +119,7 @@
 
               <div class="flex flex-col gap-2 w-full group">
                 <label class="text-sm font-medium text-zinc-400 ml-1 transition-colors group-focus-within:text-indigo-400">Nama Lengkap</label>
-                <input type="text" name="nama" placeholder="John Doe" class="w-full px-4 py-3 md:py-3.5 rounded-xl bg-zinc-900/50 border border-zinc-800 text-zinc-100 placeholder-zinc-600 outline-none transition-all duration-300 focus:border-indigo-500/50 focus:bg-zinc-900 focus:ring-4 focus:ring-indigo-500/10 hover:border-zinc-700">
+                <input value="{{ old('nama') }}" type="text" name="nama" placeholder="John Doe" class="w-full px-4 py-3 md:py-3.5 rounded-xl bg-zinc-900/50 border border-zinc-800 text-zinc-100 placeholder-zinc-600 outline-none transition-all duration-300 focus:border-indigo-500/50 focus:bg-zinc-900 focus:ring-4 focus:ring-indigo-500/10 hover:border-zinc-700">
               </div>
               @error('nama')
                 <small>{{ $message }}</small>
@@ -127,7 +127,7 @@
               <div class="flex flex-col gap-2">
                 <label class="text-sm font-medium text-zinc-400 ml-1">Jenis Kelamin</label>
                 <div class="flex gap-4">
-                  <input type="hidden" name="jk" id="genderInput">
+                  <input value="{{ old('jk') }}" type="hidden" name="jk" id="genderInput">
                   <button type="button" onclick="setGender('L')" id="btn-male" class="flex-1 py-3 md:py-3.5 px-4 rounded-xl border border-zinc-800 bg-zinc-900/50 text-zinc-500 transition-all duration-300 hover:border-zinc-700">
                     Laki-laki
                   </button>
@@ -142,7 +142,7 @@
 
               <div class="flex flex-col gap-2 w-full group">
                 <label class="text-sm font-medium text-zinc-400 ml-1 transition-colors group-focus-within:text-indigo-400">Tempat Lahir</label>
-                <input type="text" name="tmpl" placeholder="Jakarta" class="w-full px-4 py-3 md:py-3.5 rounded-xl bg-zinc-900/50 border border-zinc-800 text-zinc-100 placeholder-zinc-600 outline-none transition-all duration-300 focus:border-indigo-500/50 focus:bg-zinc-900 focus:ring-4 focus:ring-indigo-500/10 hover:border-zinc-700">
+                <input value="{{ old('tmpl') }}" type="text" name="tmpl" placeholder="Jakarta" class="w-full px-4 py-3 md:py-3.5 rounded-xl bg-zinc-900/50 border border-zinc-800 text-zinc-100 placeholder-zinc-600 outline-none transition-all duration-300 focus:border-indigo-500/50 focus:bg-zinc-900 focus:ring-4 focus:ring-indigo-500/10 hover:border-zinc-700">
               </div>
               @error('tmpl')
                 <small>{{ $message }}</small>
@@ -151,7 +151,7 @@
               <div class="flex flex-col gap-2 w-full group">
                 <label class="text-sm font-medium text-zinc-400 ml-1 transition-colors group-focus-within:text-indigo-400">Tanggal Lahir</label>
                 <div class="relative">
-                  <input type="date" name="tgll" class="w-full px-4 py-3 md:py-3.5 rounded-xl bg-zinc-900/50 border border-zinc-800 text-zinc-100 placeholder-zinc-600 outline-none transition-all duration-300 focus:border-indigo-500/50 focus:bg-zinc-900 focus:ring-4 focus:ring-indigo-500/10 hover:border-zinc-700">
+                  <input value="{{ old('tgll') }}" type="date" name="tgll" class="w-full px-4 py-3 md:py-3.5 rounded-xl bg-zinc-900/50 border border-zinc-800 text-zinc-100 placeholder-zinc-600 outline-none transition-all duration-300 focus:border-indigo-500/50 focus:bg-zinc-900 focus:ring-4 focus:ring-indigo-500/10 hover:border-zinc-700">
                   <i data-lucide="calendar" class="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none w-5 h-5"></i>
                 </div>
               </div>
@@ -174,7 +174,7 @@
               <div class="space-y-4 md:space-y-5 flex-grow">
                 <div class="flex flex-col gap-2 w-full group">
                   <label class="text-sm font-medium text-zinc-400 ml-1 transition-colors group-focus-within:text-indigo-400">Alamat Lengkap</label>
-                  <input type="text" name="alamat" placeholder="Jl. Jendral Sudirman..." class="w-full px-4 py-3 md:py-3.5 rounded-xl bg-zinc-900/50 border border-zinc-800 text-zinc-100 placeholder-zinc-600 outline-none transition-all duration-300 focus:border-indigo-500/50 focus:bg-zinc-900 focus:ring-4 focus:ring-indigo-500/10 hover:border-zinc-700">
+                  <input value="{{ old('alamat') }}" type="text" name="alamat" placeholder="Jl. Jendral Sudirman..." class="w-full px-4 py-3 md:py-3.5 rounded-xl bg-zinc-900/50 border border-zinc-800 text-zinc-100 placeholder-zinc-600 outline-none transition-all duration-300 focus:border-indigo-500/50 focus:bg-zinc-900 focus:ring-4 focus:ring-indigo-500/10 hover:border-zinc-700">
                 </div>
                 @error('alamat')
                   <small>{{ $message }}</small>
@@ -188,7 +188,7 @@
                         <option value="" disabled selected class="bg-zinc-900 text-zinc-500">Pilih Jenjang</option>
                         <option value="smk" class="bg-zinc-900">SMK</option>
                         <option value="D3" class="bg-zinc-900">D3</option>
-                        <option value="S1/D4" class="bg-zinc-900">S1</option>
+                        <option value="S1/D4" class="bg-zinc-900">S1/D4</option>
                       </select>
                       <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none w-5 h-5"></i>
                     </div>
@@ -198,7 +198,7 @@
                   </div>
                   <div class="flex flex-col gap-2 w-full group">
                     <label class="text-sm font-medium text-zinc-400 ml-1 transition-colors group-focus-within:text-indigo-400">No. HP</label>
-                    <input type="tel" name="no_tlp" placeholder="+62..." class="w-full px-4 py-3 md:py-3.5 rounded-xl bg-zinc-900/50 border border-zinc-800 text-zinc-100 placeholder-zinc-600 outline-none transition-all duration-300 focus:border-indigo-500/50 focus:bg-zinc-900 focus:ring-4 focus:ring-indigo-500/10 hover:border-zinc-700">
+                    <input value="{{ old('no_tlp') }}" type="tel" name="no_tlp" placeholder="+62..." class="w-full px-4 py-3 md:py-3.5 rounded-xl bg-zinc-900/50 border border-zinc-800 text-zinc-100 placeholder-zinc-600 outline-none transition-all duration-300 focus:border-indigo-500/50 focus:bg-zinc-900 focus:ring-4 focus:ring-indigo-500/10 hover:border-zinc-700">
                   </div>
                 </div>
                 @error('no_tlp')
@@ -217,7 +217,7 @@
                     <label class="cursor-pointer px-4 py-3 md:py-3.5 bg-zinc-800 hover:bg-zinc-700 rounded-xl border border-zinc-700 transition-colors flex items-center gap-2 group">
                       <i data-lucide="upload" class="w-4 h-4 text-zinc-400 group-hover:text-zinc-200"></i>
                       <span class="text-sm font-medium text-zinc-300">Browse</span>
-                      <input type="file" name="foto" class="hidden" onchange="handleFile(this)">
+                      <input value="{{ old('foto') }}" type="file" name="foto" class="hidden" onchange="handleFile(this)">
                     </label>
                   </div>
                 </div>

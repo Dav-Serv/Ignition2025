@@ -98,6 +98,7 @@
                 </svg>
               </div>
               <input
+                value="{{ old('email') }}"
                 id="email"
                 type="email"
                 name="email"
