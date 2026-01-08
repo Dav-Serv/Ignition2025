@@ -28,6 +28,10 @@
                             <i data-lucide="phone"></i>
                             <a href="https://wa.me/62{{ $kontak->no_tlp }}" target="_blank" class="text-gray-300 hover:text-blue-400 hover:underline transition-colors">{{ $kontak->no_tlp }}</a>
                         </span>
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="clock"></i>
+                            {{ $kontak->created_at->diffForHumans() }}
+                        </span>
                     </div>
                 </div>
 
