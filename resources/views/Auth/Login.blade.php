@@ -106,11 +106,11 @@
                 class="w-full bg-white/5 border border-white/10 text-sm rounded-xl py-3 pl-10 pr-4 outline-none transition-all duration-300 text-gray-100 placeholder-gray-600 hover:border-white/20 hover:bg-white/10 input-transition"
                 required
               />
+              @error('email')
+                <small>{{ $message }}</small>
+              @enderror
             </div>
-                @error('email')
-                  <small>{{ $message }}</small>
-                @enderror
-            </div>
+          </div>
           
           <!-- Password Field -->
           <div class="space-y-1">
@@ -133,10 +133,10 @@
                   class="w-full bg-white/5 border border-white/10 text-sm rounded-xl py-3 pl-10 pr-4 outline-none transition-all duration-300 text-gray-100 placeholder-gray-600 hover:border-white/20 hover:bg-white/10 input-transition"
                   required
                 />
-              </div>
                 @error('password')
                   <small>{{ $message }}</small>
                 @enderror
+              </div>
             </div>
           </div>
 
@@ -201,17 +201,10 @@
     <!-- Native JavaScript for Interactions -->
     <script src="{{ asset('assets/js/login.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-    @if($message = Session::get('failed'))
-        <script>
-            swal("Error!", "{{ $message }}", "error");
-        </script>
-    @endif
-
-    @if($message = Session::get('success'))
-        <script>
-            swal("Thanks!", "{{ $message }}", "success");
-        </script>
+    @if ($errors->any())
+    <script>
+        swal("Error!", "{!! implode('\n', $errors->all()) !!}", "error");
+    </script>
     @endif
   </body>
 </html>
